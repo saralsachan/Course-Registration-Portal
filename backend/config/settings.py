@@ -39,15 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #third party apps
     'rest_framework',
-    'rest_freameworrk_simplejwt',
+    'rest_framework_simplejwt',
     'corsheaders',
     
     #our apps
-    'courses'
+    'courses',
 ]
 
 MIDDLEWARE = [
-    'crosheaders.middleware.CorsMiddleware' #I added this (middleware is a chian of functions every request passes through before hitting view)
+    'corsheaders.middleware.CorsMiddleware', #I added this (middleware is a chain of functions every request passes through before hitting view)
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

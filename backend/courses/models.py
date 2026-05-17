@@ -17,7 +17,7 @@ class Course(models.Model):
     def __str__(self):
         return self.title
     
-    @property
+    @property #let's us call course.accepted_count like field, but is actually a function
     def accepted_count(self):
         return self.registrations.filter(status='accepted').count() #num of students enrolled in this course
     
@@ -27,7 +27,7 @@ class Course(models.Model):
     
 class Registration(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
+        ('pending', 'Pending'), #(stored in DB, human readible label)
         ('accepted', 'Accepted'),
         ('rejected', 'Rejected')
     ]    
@@ -53,7 +53,7 @@ class Registration(models.Model):
     registered_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
-        uniqur_together = ('user','course')
+        unique_together = ('user','course')
         
     def __str__(self):
         return f"{self.user.username} -> {self.course.title} ({self.status})"    

@@ -88,3 +88,21 @@ class RegisterUserView(CreateAPIView):
     serializer_class = RegisterUserSerializer
     permission_classes = [AllowAny]
     queryset = User.objects.all()
+
+
+
+#adding the auth/me endpoint
+from rest_framework.views import APIView
+
+
+class CurrentUserView(APIView):
+    """GET /api/auth/me/ — returns info about the logged-in user."""
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        return Response({
+            'id': request.user.id,
+            'username': request.user.username,
+            'email': request.user.email,
+            'is_staff': request.user.is_staff,
+        })

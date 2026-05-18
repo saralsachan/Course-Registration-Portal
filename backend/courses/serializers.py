@@ -4,6 +4,7 @@ from .models import Course, Registration
 
 
 class UserSerializer(serializers.ModelSerializer):
+    #The inner Meta class is for configuration ABOUT the serializer:
     class Meta:
         model = User
         fields = ['id', 'username', 'email']  #Lightweight user info for embedding in other responses.
